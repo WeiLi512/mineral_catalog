@@ -6,38 +6,28 @@
       <h1 class="mineral__name">{{ mineral.name|title }}</h1>
       <div class="mineral__image-bg">
         <img class="mineral__image" src="{% static 'images/' %}{{ mineral.image_filename }}">
+        {% if mineral.image_caption %}
         <p class="mineral__caption">{{ mineral.image_caption|title }}</p>
+        {% endif %}
       </div>
       <div class="mineral__table-container">
         <table class="mineral__table">
-          <tr>
-            <td class="mineral__category">Category</td>
-            <td>{{ mineral.category|title }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Formula</td>
-            <td class="mineral__formula">{{ mineral.formula|safe }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Strunz Classification</td>
-            <td>{{ mineral.strunz_classification }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Unit Cell</td>
-            <td>{{ mineral.unit_cell }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Color</td>
-            <td>{{ mineral.color|title }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Crystal Habit</td>
-            <td>{{ mineral.crystal_habit|title }}</td>
-          </tr>
-          <tr>
-            <td class="mineral__category">Mohs Scale Hardness</td>
-            <td>{{ mineral.mohs_scale_hardness }}</td>
-          </tr>
+            {% include 'snippets/item.html' with label='Category' value=mineral.category|title %}
+            {% include 'snippets/item.html' with label='Formula' value=mineral.formula|safe %}
+            {% include 'snippets/item.html' with label='Strunz Classification' value=mineral.strunz_classification %}
+            {% include 'snippets/item.html' with label='Color' value=mineral.color|title %}
+            {% include 'snippets/item.html' with label='Crystal System' value=mineral.crystal_system|title %}
+            {% include 'snippets/item.html' with label='Unit Cell' value=mineral.unit_cell %}
+            {% include 'snippets/item.html' with label='Crystal Symmetry' value=mineral.crystal_symmetry|title %}
+            {% include 'snippets/item.html' with label='Cleavage' value=mineral.cleavage|title %}
+            {% include 'snippets/item.html' with label='Mohs Scale Hardness' value=mineral.mohs_scale_hardness %}
+            {% include 'snippets/item.html' with label='Streak' value=mineral.streak|title %}
+            {% include 'snippets/item.html' with label='Diaphaneity' value=mineral.diaphaneity|title %}
+            {% include 'snippets/item.html' with label='Optical Properties' value=mineral.optical_properties|title %}
+            {% include 'snippets/item.html' with label='Refractive Index' value=mineral.refractive_index %}
+            {% include 'snippets/item.html' with label='Crystal Habit' value=mineral.crystal_habit|title %}
+            {% include 'snippets/item.html' with label='Specific Gravity' value=mineral.specific_gravity %}
+            {% include 'snippets/item.html' with label='Group' value=mineral.group|title %}
         </table>
       </div>
     </div>

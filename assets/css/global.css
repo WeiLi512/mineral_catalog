@@ -196,7 +196,7 @@ table, p, ul { margin-bottom: 2.5rem; }
 .mineral__image { display: block; margin: 0 auto; border: solid 2px #CAE5D2; }
 .mineral__image-bg { background-color: #ecfaf8; padding: 20px 0; }
 .mineral__caption { font-size: 12px; font-style: italic; padding: 10px 0 0 0; margin: 0; }
-.mineral__table { font-size: 14px; color: #384033; }
+.mineral__table { font-size: 14px; color: #384033; width: 100%; }
 .mineral__table td { border-color: #CAE5D2; }
 .mineral__table tr:last-of-type td { border-bottom: none; padding-bottom: 0; }
 .mineral__table-container { padding: 5px 30px 0; }
