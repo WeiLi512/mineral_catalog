@@ -2,6 +2,7 @@
 
 {% block content %}
     <div class="grid-100">
+        {% if minerals %}
         <ul class="minerals__container">
             {% for mineral in minerals %}
                 <li class="minerals__item">
@@ -9,5 +10,8 @@
                 </li>
             {% endfor %}
         </ul>
+        {% else %}
+            <div style="background: #fff; padding: 20px;">No minerals</div>
+        {% endif %}
     </div>
 {% endblock %}
