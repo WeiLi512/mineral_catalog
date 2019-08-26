@@ -5,6 +5,9 @@ from .utils import get_mineral_groups
 
 # Create your views here.
 def mineral_list(request):
+    """
+    Mineral List View
+    """
     minerals = Mineral.objects.all()
 
     letter = request.GET.get('letter', '')
@@ -26,5 +29,10 @@ def mineral_list(request):
 
 
 def mineral_detail(request, id):
+    """
+    Mineral Detail View
+    :param request: http request
+    :param id: mineral id
+    """
     mineral = Mineral.objects.get(id=id)
     return render(request, 'detail.html', {'mineral': mineral})

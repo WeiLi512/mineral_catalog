@@ -23,6 +23,7 @@
         <h1 class="logo__name text-centered">Macky's Minerals</h1>
       </a>
       <p class="logo__text text-centered">They're not rocks!</p>
+        <h3>Filter by First Letter:</h3>
         <ul class="filter-letter">
             {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
             <li class="{% if selected_letter and letter == selected_letter %}active{% endif %}">
@@ -35,7 +36,7 @@
             <button type="submit" value="Search">Search</button>
         </form>
         <div class="filter-group">
-            <h2>Filter by Group:</h2>
+            <h3>Filter by Group:</h3>
             <ul>
                 {% for group in groups %}
                 <li class="{% if selected_group and group == selected_group %}active{% endif %}">

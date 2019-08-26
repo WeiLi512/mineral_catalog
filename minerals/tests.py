@@ -2,8 +2,8 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .models import Mineral
+from .utils import get_mineral_groups
 
-# Create your tests here.
 class MineralModelTests(TestCase):
     def test_mineral_creation(self):
         mineral = Mineral.objects.create(
@@ -57,3 +57,30 @@ class MineralViewsTests(TestCase):
                                        kwargs={'id': self.mineral.id}))
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(self.mineral, resp.context['mineral'])
+
+    def test_mineral_filter_by_first_letter(self):
+        resp = self.client.get(reverse('minerals:list'), {'letter': 'A'})
+        self.assertEqual(resp.status_code, 200)
+        minerals = resp.context['minerals']
+        for mineral in minerals:
+            self.assertEqual(mineral.name[0], 'A')
+
+    def test_mineral_filter_by_group(self):
+        resp = self.client.get(reverse('minerals:list'), {'group': 'Silicates'})
+        self.assertEqual(resp.status_code, 200)
+        minerals = resp.context['minerals']
+        for mineral in minerals:
+            self.assertEqual(mineral.group, 'Silicates')
+
+        resp = self.client.get(reverse('minerals:list'), {'group': 'Other'})
+        self.assertEqual(resp.status_code, 200)
+        minerals = resp.context['minerals']
+        for mineral in minerals:
+            self.assertNotIn(mineral.group, get_mineral_groups())
+
+    def test_mineral_text_search(self):
+        resp = self.client.get(reverse('minerals:list'), {'q': 'ap'})
+        self.assertEqual(resp.status_code, 200)
+        minerals = resp.context['minerals']
+        for mineral in minerals:
+            self.assertIn('ap', mineral.name.lower())

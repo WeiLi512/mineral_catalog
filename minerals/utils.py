@@ -1,4 +1,7 @@
 def get_mineral_groups():
+    """
+    Helper function to get groups for filter
+    """
     return [
         'Silicates',
         'Oxides',

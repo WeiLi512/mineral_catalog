@@ -226,8 +226,10 @@ table, p, ul { margin-bottom: 2.5rem; }
 
 .filter-group {
   position: fixed;
-  top: 250px;
-  left: 70px;
+  /*top: 250px;*/
+  /*left: 70px;*/
+  margin-top: -50px;
+  margin-left: -200px;
 }
 
 .filter-group ul {
@@ -246,4 +248,12 @@ table, p, ul { margin-bottom: 2.5rem; }
 
 .search-form input {
   width: 50%;
+}
+
+@media (max-width: 1200px) {
+  .filter-group { position: static; margin-top: 0; margin-left: 0; }
+  .filter-group li {
+    display: inline-block;
+    margin-right: 10px;
+  }
 }
